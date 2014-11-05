@@ -1,3 +1,4 @@
+import cucumber.api.PendingException;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
@@ -25,6 +26,13 @@ public class CalculatorDef {
         calculator.push("+");
     }
 
+    @When("^I subtract (\\d+) and (\\d+)$")
+    public void i_subtract_and(int num1, int num2) throws Throwable {
+        calculator.push(num1);
+        calculator.push(num2);
+        calculator.push("-");
+    }
+
     @Then("^the result is (\\d+)$")
     public void the_result_is(double expected) {
         assertEquals(expected, calculator.value());
@@ -47,6 +55,11 @@ public class CalculatorDef {
             calculator.push(entry.second);
             calculator.push(entry.operation);
         }
+    }
+
+    @Given("^I press (.+)$")
+    public void I_press(String what) {
+        calculator.push(what);
     }
 
     public class Entry {

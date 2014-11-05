@@ -9,6 +9,10 @@ Feature: Basic Arithmetic
     When I add 4 and 5
     Then the result is 9
 
+  Scenario: Subtraction
+    When I subtract 5 and 4
+    Then the result is 1
+
   Scenario: Another Addition
   # Try to change one of the values below to provoke a failure
     When I add 4 and 7
